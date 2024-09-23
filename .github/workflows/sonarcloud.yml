@@ -67,5 +67,4 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
             projectBaseDir: front/ # dans le dossier front
-            args: >
-              -Dsonar.typescript.lcov.reportPaths=coverage/bobapp/lcov.info  # Chemin vers le fichier de couverture LCOV
+            args: -Dsonar.typescript.lcov.reportPaths=coverage/bobapp/lcov.info

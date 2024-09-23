@@ -41,7 +41,7 @@ jobs:
 
   front:
     name: Build and analyze front
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: front

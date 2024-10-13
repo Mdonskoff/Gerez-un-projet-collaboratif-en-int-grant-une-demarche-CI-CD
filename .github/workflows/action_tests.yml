@@ -15,7 +15,7 @@ jobs :
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: back #se mettre dans le dossier back de github pour exécuter
+        working-directory: back 
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -25,7 +25,7 @@ jobs :
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B clean package --file pom.xml #clean avant l'install des packages
+      run: mvn -B clean package --file pom.xml 
     - name: Run backend tests with coverage
       run: mvn jacoco:report # Génère le rapport de couverture avec JaCoCo
 
@@ -74,12 +74,12 @@ jobs :
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: 17
-          distribution: 'zulu' # Alternative distribution options are available.
+          distribution: 'zulu' 
           
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
@@ -97,7 +97,7 @@ jobs :
           
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd back
@@ -114,7 +114,7 @@ jobs :
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -129,10 +129,10 @@ jobs :
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}  
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-            projectBaseDir: front/ # dans le dossier front
+            projectBaseDir: front/ 
             args: -Dsonar.typescript.lcov.reportPaths=coverage/bobapp/lcov.info    
 
   docker_back:
